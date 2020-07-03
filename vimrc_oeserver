@@ -28,7 +28,8 @@ Plugin 'xolox/vim-easytags'
 Plugin 'majutsushi/tagbar'
 Plugin 'SrcExpl'
 Plugin 'altercation/vim-colors-solarized'
-
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-theme'
 call vundle#end()
 filetype plugin indent on    " required
 
@@ -41,9 +42,9 @@ let Tlist_Use_Right_Window = 1
 nmap <F1> v[{vv]}zf
 nmap <F5> :!ctags -R --exclude=oe-logs --exclude=oe-workdir<CR>
 nmap <F6> :set tags=$PWD/tags<CR>
-nmap <F6> :NERDTree<CR>
-nmap <F7> :SrcExplToggle<CR>
-nmap <F8> :TlistToggle<CR>
+nmap <F7> :NERDTree<CR>
+nmap <F8> :SrcExplToggle<CR>
+nmap <F9> :Tlist<CR>
 
 let g:easytags_async=1
 let g:easytags_auto_highlight = 0
