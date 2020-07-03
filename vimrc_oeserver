@@ -24,12 +24,12 @@ Plugin 'The-NERD-tree'
 Plugin 'AutoComplPop'
 Plugin 'taglist-plus'
 Plugin 'ronakg/quickr-cscope.vim'
-Plugin 'xolox/vim-easytags'
 Plugin 'majutsushi/tagbar'
 Plugin 'SrcExpl'
-Plugin 'altercation/vim-colors-solarized'
+Plugin 'tomasr/molokai'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-theme'
+Plugin 'octol/vim-cpp-enhanced-highlight'
 call vundle#end()
 filetype plugin indent on    " required
 
@@ -75,6 +75,5 @@ let g:SrcExpl_isUpdateTags = 0
 
 syntax enable
 set background=dark
-colorschem desert
 set foldmethod=manual
 hi Folded ctermbg=white
