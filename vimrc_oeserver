@@ -28,8 +28,10 @@ Plugin 'majutsushi/tagbar'
 Plugin 'SrcExpl'
 Plugin 'tomasr/molokai'
 Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-theme'
+"Plugin 'vim-airline/vim-airline-theme'
 Plugin 'octol/vim-cpp-enhanced-highlight'
+Plugin 'junegunn/fzf'
+Plugin 'junegunn/fzf.vim'
 call vundle#end()
 filetype plugin indent on    " required
 
@@ -51,6 +53,8 @@ let g:easytags_auto_highlight = 0
 let g:easytags_include_members = 1
 let g:easytags_dynamic_files =1
 
+let g:fzf_preview_window = ''
+let g:fzf_preview_window = 'right:60%'
 "--------------------------------------------------"
 "" set ctags database path
 "--------------------------------------------------"
@@ -74,6 +78,5 @@ let g:SrcExpl_isUpdateTags = 0
 
 
 syntax enable
-set background=dark
 set foldmethod=manual
 hi Folded ctermbg=white
