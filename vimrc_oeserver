@@ -1,0 +1,82 @@
+set smartindent
+set mouse=a
+set ttymouse=xterm2
+set number
+set showmatch
+set hlsearch
+set ignorecase
+set tabstop=2
+syntax on
+
+
+												
+
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'vundleVim/Vundle.vim'
+Plugin 'tpope/vim-fugitive'
+Plugin 'git://git.wincent.com/command-t.git'
+Plugin 'file:///home/gmarik/path/to/plugin'
+Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+
+Plugin 'The-NERD-tree'
+Plugin 'AutoComplPop'
+Plugin 'taglist-plus'
+Plugin 'ronakg/quickr-cscope.vim'
+Plugin 'majutsushi/tagbar'
+Plugin 'SrcExpl'
+Plugin 'tomasr/molokai'
+Plugin 'vim-airline/vim-airline'
+"Plugin 'vim-airline/vim-airline-theme'
+Plugin 'octol/vim-cpp-enhanced-highlight'
+Plugin 'junegunn/fzf'
+Plugin 'junegunn/fzf.vim'
+call vundle#end()
+filetype plugin indent on    " required
+
+let NERDTreeWinPos = 'left'
+let Tlist_Inc_Winwidth = 0
+let Tlist_Exit_OnlyWindow = 0
+let Tlist_Auto_Open = 0
+let Tlist_Use_Right_Window = 1
+
+nmap <F1> v[{vv]}zf
+nmap <F5> :!ctags -R --exclude=oe-logs --exclude=oe-workdir<CR>
+nmap <F6> :set tags=$PWD/tags<CR>
+nmap <F7> :NERDTree<CR>
+nmap <F8> :SrcExplToggle<CR>
+nmap <F9> :Tlist<CR>
+
+let g:easytags_async=1
+let g:easytags_auto_highlight = 0
+let g:easytags_include_members = 1
+let g:easytags_dynamic_files =1
+
+let g:fzf_preview_window = ''
+let g:fzf_preview_window = 'right:60%'
+"--------------------------------------------------"
+"" set ctags database path
+"--------------------------------------------------"
+set tags+=./tags,../tags,../../tags,../../../tags,../../../../tags
+set complete
+
+"--------------------------------------------------"
+"" set cscope database path
+"--------------------------------------------------"
+"set csprg=/usr/bin/cscope
+"set csto=0
+"set cst
+"set nocsverb
+
+let g:SrcExpl_winHeight = 9
+let g:SrcExpl_refreshTime = 1000
+let g:SrcExpl_jumpKey = "<enter>"
+let g:SrcExpl_gobackKey = "<space>"
+let g:SrcExpl_isUpdateTags = 0
+
+
+
+syntax enable
+set foldmethod=manual
+hi Folded ctermbg=white
