@@ -23,8 +23,6 @@ set ignorecase
 set mouse=a
 " set spell
 " set spelllang=en_us
-set backspace=indent,eol,start
-set t_Co=256
 "Give more space for displaying messages.
 set cmdheight=2
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
@@ -40,30 +38,30 @@ Plug 'tweekmonster/gofmt.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'vim-utils/vim-man'
 Plug 'mbbill/undotree'
-Plug 'sheerun/vim-polyglot'
+"Plug 'sheerun/vim-polyglot'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 "  I AM SO SORRY FOR DOING COLOR SCHEMES IN MY VIMRC, BUT I HAVE
 "  TOOOOOOOOOOOOO
 Plug 'dracula/vim'
-Plug 'gruvbox-community/gruvbox'
-Plug 'sainnhe/gruvbox-material'
+"Plug 'gruvbox-community/gruvbox'
+"Plug 'sainnhe/gruvbox-material'
 "Plug 'morhetz/gruvbox'
-Plug 'crusoexia/vim-monokai'
+"Plug 'crusoexia/vim-monokai'
 " Plug 'phanviet/vim-monokai-pro'
 Plug 'vim-airline/vim-airline'
-Plug 'flazz/vim-colorschemes'
+"Plug 'flazz/vim-colorschemes'
 Plug '/home/mpaulson/personal/vim-be-good'
 Plug 'Vimjas/vim-python-pep8-indent'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tell-k/vim-autopep8'
-Plug 'dart-lang/dart-vim-plugin'
+"Plug 'dart-lang/dart-vim-plugin'
 Plug 'preservim/nerdcommenter'
 Plug 'tpope/vim-surround'
 Plug 'vim-scripts/taglist.vim'
 call plug#end()
 let g:coc_node_path = '/usr/bin/nodejs'
-let g:gruvbox_contrast_dark = 'medium'
+"let g:gruvbox_contrast_dark = 'medium'
 " --- The Greatest plugin of all time.  I am not bias
 let g:vim_be_good_floating = 1
 " --- ctrlp
@@ -103,15 +101,16 @@ let g:autopep8_disable_show_diff=1
 " --- netrw
 let g:netrw_liststyle=3
 let g:netrw_altv = 1
-colorscheme gruvbox
-"colorscheme dracula
+"colorscheme gruvbox
+colorscheme dracula
 " colorscheme monokai
-set background=dark
+"set background=dark
 if executable('rg')
     set grepprg=rg\ --vimgrep\ --no-heading
     set grepformat=%f:%l:%c:%m,%f:%l:%m
     let g:rg_derive_root='true'
 endif
+let g:ackprg = 'rg --vimgrep --no-heading'
 let loaded_matchparen = 1
 let mapleader = " "
 let g:netrw_browse_split = 2
@@ -124,9 +123,9 @@ nnoremap <leader>k :wincmd k<CR>
 nnoremap <leader>l :wincmd l<CR>
 nnoremap <leader>u :UndotreeShow<CR>
 nnoremap <leader>pv :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
-nnoremap <Leader>ps :Rg!<SPACE>
+nnoremap <leader>ps :Rg!<SPACE> <C-R>=expand("<cword>")<CR><CR>
 nnoremap <C-p> :GFiles<CR>
-nnoremap <Leader>pf :Files<CR>
+nnoremap <leader>pf :Files<CR>
 " nnoremap <Leader><CR> :so ~/.config/nvim/init.vim<CR>
 nnoremap <Leader><CR> :so ~/.vimrc<CR>
 nnoremap <Leader>+ :vertical resize +5<CR>
@@ -216,4 +215,43 @@ command! -bang -nargs=* Rg
       \           : fzf#vim#with_preview('right:50%:hidden', '?'),
       \   <bang>0)
 autocmd BufWritePre * :call TrimWhitespace()
+
+
+cs add cscope.out
+
+if $CSCOPE_DB != ""
+    cs add $CSCOPE_DB
+else
+    cs add ~/ref/linux-4.18.3/cscope.out
+    "else
+    "    cs add /usr/src/linux-source-2.6.22/cscope.out
+endif
+set cscopeverbose
+" cscope/vim key mappings
+" 's' symbol: find all references to the token under cursor
+" 'g' global: find global definition(s) of the token under cursor
+" 'c' calls:  find all calls to the function name under cursor
+" 't' text:   find all instances of the text under cursor
+" 'e' egrep:  egrep search for the word under cursor
+" 'f' file:   open the filename under cursor
+" 'i' includes: find files that include the filename under cursor
+" 'd' called: find functions that function under cursor calls
+nmap <C-\>s :cs find s <C-R>=expand("<cword>")<CR><CR>
+nmap <C-\>g :cs find g <C-R>=expand("<cword>")<CR><CR>
+nmap <C-\>c :cs find c <C-R>=expand("<cword>")<CR><CR>
+nmap <C-\>t :cs find t <C-R>=expand("<cword>")<CR><CR>
+nmap <C-\>e :cs find e <C-R>=expand("<cword>")<CR><CR>
+nmap <C-\>f :cs find f <C-R>=expand("<cword>")<CR><CR>
+nmap <C-\>i :cs find i <C-R>=expand("<cword>")<CR><CR>
+nmap <C-\>d :cs find d <C-R>=expand("<cword>")<CR><CR>
+
+" CTRL-space <C-@> search and split horizonal window
+nmap <C-@>s :scs find s <C-R>=expand("<cword>")<CR><CR>
+nmap <C-@>g :scs find g <C-R>=expand("<cword>")<CR><CR>
+nmap <C-@>c :scs find c <C-R>=expand("<cword>")<CR><CR>
+nmap <C-@>t :scs find t <C-R>=expand("<cword>")<CR><CR>
+nmap <C-@>e :scs find e <C-R>=expand("<cword>")<CR><CR>
+nmap <C-@>f :scs find f <C-R>=expand("<cword>")<CR><CR>
+nmap <C-@>i :scs find i <C-R>=expand("<cword>")<CR><CR>
+nmap <C-@>d :scs find d <C-R>=expand("<cword>")<CR><CR>
 "autocmd BufWritePre * :call system("ctags -R")
