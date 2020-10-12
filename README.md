@@ -5,7 +5,7 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.c
 https://github.com/neoclide/coc.nvim/wiki/Language-servers
 
 # nodejs for COC
-# 저장소 추가
+저장소 추가
 curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
 
 # apt 업데이트하기
