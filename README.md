@@ -14,8 +14,12 @@ curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
 # apt 업데이트하기
 sudo apt-get update
 
-# nodejs 및 빌드도구 설치하기
+5) nodejs 및 빌드도구 설치하기
 sudo apt-get install -y nodejs build-essential
 
 # node -v
 v8.9.4
+
+6) ripgrep
+sudo add-apt-repository ppa:x4121/ripgrep
+sudo apt-get update
