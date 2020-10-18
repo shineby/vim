@@ -21,4 +21,5 @@ v8.9.4
 
 # ripgrep
 sudo add-apt-repository ppa:x4121/ripgrep
+
 sudo apt-get update
